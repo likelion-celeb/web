@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{%block content%}
+<h6>UPLOAD IMAGE</h6>
+<br>
+<form enctype='multipart/form-data' action="upload/" method='POST' class="dropzone dz" id="my-dropzone" >
+    {% csrf_token %}
+    <div class="fallback">
+      <input name="file" type="file" multiple />
+    </div>
+</form>
+
+<button class="button" style="vertical-align:middle"><span> Go </span></button>
+{%endblock%}
