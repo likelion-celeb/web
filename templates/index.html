@@ -1,14 +1,18 @@
 {% extends 'base.html' %}
 
 {%block content%}
-<h6>UPLOAD IMAGE</h6>
+<!--<h6>UPLOAD IMAGE</h6>-->
 <br>
-<form enctype='multipart/form-data' action="upload/" method='POST' class="dropzone dz" id="my-dropzone" >
+<form enctype='multipart/form-data' action="upload/" method='POST' class="dropzone dz" id="my-dropzone">
     {% csrf_token %}
     <div class="fallback">
       <input name="file" type="file" multiple />
     </div>
 </form>
 
-<button class="button" style="vertical-align:middle"><span> Go </span></button>
+<form enctype='multipart/form-data' action="result/" method='POST'>
+    {% csrf_token %}
+    <button class="button" style="vertical-align:middle"><span> upload </span></button>
+</form>
+
 {%endblock%}

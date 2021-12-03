@@ -16,14 +16,14 @@ def file_upload(request):
     if request.method == 'POST':
         my_file = request.FILES.get('file')
         Image.objects.create(image=my_file)
-        print(my_file)
+
         return HttpResponse('')
-    return JsonResponse({'post': 'fasle'})
+
+    return JsonResponse({'post': 'false'})
 
 
 def result(request):
-    images = Image.objects.all()
-    context = {
-        'images': images
-    }
-    return render(request, 'result.html', context)
+    result = Image.objects.all()
+    result = result.values_list('image').order_by('-date')[0]
+
+    return render(request, 'result.html', {'img': result[0]})
